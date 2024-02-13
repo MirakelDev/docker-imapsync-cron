@@ -58,8 +58,16 @@ RUN chmod +x /entrypoint.sh /usr/bin/imapsync
 RUN set -xe \
     && /usr/bin/imapsync --testslive
 
-# Default cron schedule
-ENV CRON_SCHEDULE="* * * * *"
+# Default environment variables
+ENV CRON_SCHEDULE="0 * * * *" \
+    HOST1="test1.lamiral.info" \
+    USER1="test1" \
+    PASSWORD1="secret1" \
+    OTHER1="" \
+    HOST2="test2.lamiral.info" \
+    USER2="test2" \
+    PASSWORD2="secret2" \
+    OTHER2=""
 
 ENTRYPOINT ["/entrypoint.sh"]
 
