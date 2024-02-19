@@ -12,6 +12,6 @@ services:
       HOST2: 'test2.lamiral.info'
       USER2: 'test2'
       PASSWORD2: 'secret2'
-      OTHER2: ''
+      OTHER2: '--dry'
     volumes:
-      - ./Logs:/root/LOG_imapsync
+      - ./Logs:/logs

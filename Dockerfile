@@ -48,11 +48,12 @@ RUN set -xe && \
     && cpanm IO::Socket::SSL
 
 COPY imapsync /usr/bin/imapsync
+COPY run_imapsync.sh /usr/bin/run_imapsync.sh
 COPY crontab.template /crontab.template
 COPY entrypoint.sh /entrypoint.sh
 
 # Adding executable permissions
-RUN chmod +x /entrypoint.sh /usr/bin/imapsync
+RUN chmod +x /entrypoint.sh /usr/bin/run_imapsync.sh /usr/bin/imapsync
 
 # Run Imapsync test
 RUN set -xe \

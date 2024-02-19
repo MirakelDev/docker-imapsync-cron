@@ -1,5 +1,7 @@
 #!/bin/sh
 
+/usr/bin/run_imapsync.sh
+
 env >> /etc/environment
 
 # Run substitutions on the template file and inject the crontab
