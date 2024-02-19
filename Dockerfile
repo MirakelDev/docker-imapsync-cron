@@ -48,18 +48,27 @@ RUN set -xe && \
     && cpanm IO::Socket::SSL
 
 COPY imapsync /usr/bin/imapsync
+COPY run_imapsync.sh /usr/bin/run_imapsync.sh
 COPY crontab.template /crontab.template
 COPY entrypoint.sh /entrypoint.sh
 
 # Adding executable permissions
-RUN chmod +x /entrypoint.sh /usr/bin/imapsync
+RUN chmod +x /entrypoint.sh /usr/bin/run_imapsync.sh /usr/bin/imapsync
 
 # Run Imapsync test
 RUN set -xe \
     && /usr/bin/imapsync --testslive
 
-# Default cron schedule
-ENV CRON_SCHEDULE="* * * * *"
+# Default environment variables
+ENV CRON_SCHEDULE="0 * * * *" \
+    HOST1="test1.lamiral.info" \
+    USER1="test1" \
+    PASSWORD1="secret1" \
+    OTHER1="" \
+    HOST2="test2.lamiral.info" \
+    USER2="test2" \
+    PASSWORD2="secret2" \
+    OTHER2=""
 
 ENTRYPOINT ["/entrypoint.sh"]
 

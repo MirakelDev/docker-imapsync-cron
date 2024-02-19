@@ -1,0 +1,17 @@
+version: '3'
+services:
+  imapsync-cron:
+    image: ghcr.io/mirakeldev/imapsync-cron:latest
+    container_name: ImapsyncCron
+    environment:
+      CRON_SCHEDULE: '*/15 * * * *'
+      HOST1: 'test1.lamiral.info'
+      USER1: 'test1'
+      PASSWORD1: 'secret1'
+      OTHER1: ''
+      HOST2: 'test2.lamiral.info'
+      USER2: 'test2'
+      PASSWORD2: 'secret2'
+      OTHER2: '--dry'
+    volumes:
+      - ./Logs:/logs
